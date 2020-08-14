@@ -159,10 +159,10 @@ then
 	export LUA_REDIS_DB="3"
 fi
 
-#默认user_server_name
-if [[ -z $USER_SERVER_NAME ]]
+#FILE_SERVER_NAME
+if [[ -z $FILE_SERVER_NAME ]]
 then
-	export USER_SERVER_NAME="_"
+	export FILE_SERVER_NAME="_"
 fi
 
 cd /usr/local/openresty/nginx/conf
@@ -176,7 +176,7 @@ cp /usr/local/openresty/nginx/conf/nginx_template.conf /usr/local/openresty/ngin
 export WORKER_RLIMIT_NOFILE=${WORKER_RLIMIT_NOFILE}
 export WORKER_CONNECTIONS=${WORKER_CONNECTIONS}
 
-envsubst '$LOGPATH $USER_SERVER_NAME $user,$WORK_PROCESSES,${WORKER_RLIMIT_NOFILE},$WORKER_CPU_AFFINITY $WORKER_CONNECTIONS $ClIENT_HEADER_BUFFER_SIZE $ClIENT_BODY_BUFFER_SIZE'< /usr/local/openresty/nginx/conf/nginx_template.conf > /usr/local/openresty/nginx/conf/nginx.conf 
+envsubst '$LOGPATH $FILE_SERVER_NAME $user,$WORK_PROCESSES,${WORKER_RLIMIT_NOFILE},$WORKER_CPU_AFFINITY $WORKER_CONNECTIONS $ClIENT_HEADER_BUFFER_SIZE $ClIENT_BODY_BUFFER_SIZE'< /usr/local/openresty/nginx/conf/nginx_template.conf > /usr/local/openresty/nginx/conf/nginx.conf 
 
 if [[ -f /etc/nginx/config/http_limit_optimization.conf ]]
 then

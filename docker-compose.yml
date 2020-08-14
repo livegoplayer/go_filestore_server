@@ -5,7 +5,7 @@ services:
       build: ./
       container_name: go_user_server
       environment:
-         USER_SERVER_NAME: "www.52db.xyz"
+         FILE_SERVER_NAME: "www.52db.xyz"
          RESTY_CONFIG_OPTIONS_MORE: "--with-echo_nginx_module"
       ports:
          - "80:80"
